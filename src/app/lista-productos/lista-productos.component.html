@@ -1,0 +1,29 @@
+<div class="form-group">
+  <label>Email (covid19@gmail.com)</label>
+  <input type="text" class="form-control" placeholder="Ingrese su email" [(ngModel)]="correo">
+</div>
+<div *ngIf="correo?.length && correo == 'covid19@gmail.com'">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Producto</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Tienda</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let product of products; index as i">
+      <tr [ngClass]="{
+        'alert-success': product.quantity !== 0,
+        'alert-danger': product.quantity === 0
+      }">
+      <th scope="row">{{i+1}}</th>
+        <td>{{product.name}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.quantity}}</td>
+        <button class="btn btn-danger" [disabled]="product.quantity === 0"  (click)="addProductToCart(product.name, product.price, product.quantity, i)">Añadir</button>
+      </tr>
+    </tbody>
+  </table>
+</div>

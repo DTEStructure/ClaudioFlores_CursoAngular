@@ -1,0 +1,22 @@
+<div *ngIf="products.length > 0" >
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Producto</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Carrito</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let product of products; index as i">
+      <tr>
+        <th scope="row">{{i+1}}</th>
+        <td>{{product.name}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.quantity}}</td>
+        <button class="btn btn-danger" (click)="removeProduct(product.name, product.price, product.quantity)">Quitar</button>
+      </tr>
+    </tbody>
+  </table>
+</div>
